@@ -1,0 +1,12 @@
+[
+	{
+		"assets": "../assets/14-TileSets/Terrain (32x32).png",
+		"width": 32,
+		"height": 32
+	},
+	{
+		"assets": "../assets/14-TileSets/Decorations (32x32).png",
+		"width": 32,
+		"height": 32
+	}
+]

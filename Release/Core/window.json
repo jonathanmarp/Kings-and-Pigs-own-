@@ -1,0 +1,10 @@
+{
+  "width": 1090,
+  "height": 700,
+  "minWidth": 800,
+  "minHeight": 600,
+  "resizable": 0,
+  "grid": 1,
+  "textureWorld": "textureWorld.json",
+  "textureSprite": "textureSprite.json"
+}
