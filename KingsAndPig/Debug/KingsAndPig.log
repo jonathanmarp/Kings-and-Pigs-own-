@@ -1,1 +1,6 @@
-﻿  KingsAndPig.vcxproj -> D:\Dev\KingsAndPig\Debug\KingsAndPig.exe
+﻿  File.cpp
+  Main.cpp
+D:\Dev\KingsAndPig\KingsAndPig\src\Main.cpp(80,35): warning C4018: '>': signed/unsigned mismatch
+  MapImage.cpp
+  Generating Code...
+  KingsAndPig.vcxproj -> D:\Dev\KingsAndPig\Debug\KingsAndPig.exe

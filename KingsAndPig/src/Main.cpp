@@ -30,7 +30,7 @@ Main::Main() {
 	 * Init SDL2{Timer, Video, Events}
 	 * And check intialize has been successfull
 	 */
-	if (SDL_Init(SDL_INIT_TIMER | SDL_INIT_VIDEO | SDL_INIT_EVENTS) != 0) {
+	if (SDL_Init(SDL_INIT_TIMER | SDL_INIT_VIDEO | SDL_INIT_EVENTS) != 0) [[unlikely]] {
 		// Show error message
 		std::cout << "Error: " << SDL_GetError() << std::endl;
 		return;
@@ -40,7 +40,7 @@ Main::Main() {
 	 * Init SDL2{Timer, Video, Events}
 	 * And check intialize has been successfull
 	 */
-	if (TTF_Init() != 0) {
+	if (TTF_Init() != 0) [[unlikely]] {
 		// Show error message
 		std::cout << "Error: " << TTF_GetError() << std::endl;
 		return;
@@ -49,7 +49,7 @@ Main::Main() {
 	/**
 	 * load support for the  PNG image formats
 	 */
-	if ((IMG_Init(IMG_INIT_PNG) & IMG_INIT_PNG) != IMG_INIT_PNG) {
+	if ((IMG_Init(IMG_INIT_PNG) & IMG_INIT_PNG) != IMG_INIT_PNG) [[unlikely]] {
 		// Show error message
 		std::cout << "Error: " << IMG_GetError() << std::endl;
 	}
@@ -58,12 +58,12 @@ Main::Main() {
 	this->Start();
 
 	// Start <Looping>
-	while (core->IsProgramRun()) {
+	while (core->IsProgramRun()) [[likely]] {
 		// Get ticks for first loop
 		this->startTicks = SDL_GetTicks();
 
 		// Get event
-		while (SDL_PollEvent(this->core->GetEvent())) {
+		while (SDL_PollEvent(this->core->GetEvent())) [[likely]] {
 			// Call handle event
 			this->Event();
 		}
@@ -102,7 +102,7 @@ Main::~Main() {
 void Main::Start() {
 	// Setup
 	// Check settings file is exist
-	if (File::IsExist(this->windowSettings)) {
+	if (File::IsExist(this->windowSettings)) [[likely]] {
 		// If exist
 		// Get file
 		std::ifstream _data_;
@@ -145,7 +145,7 @@ void Main::Start() {
 		SDL_RENDERER_PRESENTVSYNC | SDL_RENDERER_ACCELERATED);
 
 	// Check window and render have error
-	if (!window || !render) {
+	if (!window || !render) [[unlikely]] {
 		// Show error message
 		std::cout << "Error: " << SDL_GetError() << std::endl;
 	}
@@ -166,7 +166,7 @@ void Main::Start() {
 		nlohmann::json tempSettingsWorld;
 
 		// Check settings file is exist
-		if (File::IsExist(tempWorldSettings)) {
+		if (File::IsExist(tempWorldSettings)) [[likely]] {
 			// If exist
 			// Get file
 			std::ifstream _data_;
@@ -180,7 +180,7 @@ void Main::Start() {
 			// Close
 			_data_.close();
 		}
-		else {
+		else [[unlikely]] {
 			// Show error
 			std::cout << "Error settings world: " << tempWorldSettings << std::endl;
 
@@ -201,13 +201,13 @@ void Main::Start() {
 void Main::Event() {
 	switch (this->core->GetEvent()->type) {
 		// If SDL Request quit
-		case SDL_QUIT: {
+		[[unlikely]] case SDL_QUIT: {
 			// Quit
 			this->core->SetProgramRun(false);
 		} break;
 
 			// If SDL Window event
-		case SDL_WINDOWEVENT: {
+		[[unlikely]] case SDL_WINDOWEVENT: {
 			// Get event
 			const uint32_t DT = this->core->GetEvent()->window.type;
 
@@ -223,10 +223,10 @@ void Main::Event() {
 // This function used for logic
 void Main::Update() {
 	// Map worlds
-	for (auto world : this->worlds) {
-		// Render
+	std::for_each(this->worlds.begin(), this->worlds.end(), [](auto& world) {
+		// Update
 		world.Update();
-	}
+	});
 }
 
 // This function used for render
@@ -260,10 +260,10 @@ void Main::Render() {
 	}
 
 	// Map worlds
-	for (auto world : this->worlds) {
+	std::for_each(this->worlds.begin(), this->worlds.end(), [](auto& world) {
 		// Render
 		world.Render();
-	}
+	});
 
 	// Present window
 	SDL_RenderPresent(this->core->GetRender());

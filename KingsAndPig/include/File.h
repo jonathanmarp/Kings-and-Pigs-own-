@@ -10,7 +10,7 @@ public:
 	 * This function used to check file is
 	 * Exist or not
 	 */
-	static bool IsExist(std::string path);
+	[[maybe_unused]] static bool IsExist(std::string path);
 };
 
 #endif // FILE_H

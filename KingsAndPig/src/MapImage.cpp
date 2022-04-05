@@ -15,7 +15,7 @@
 MapImage::MapImage(SDL_Renderer* render, std::string path)
 	: pathToTexture(path), _render_(render) {
 	// Check file is exist
-	if (File::IsExist(this->pathToTexture)) {
+	if (File::IsExist(this->pathToTexture)) [[likely]] {
 		// If exist
 		// Get file
 		std::ifstream _data_;
@@ -29,7 +29,7 @@ MapImage::MapImage(SDL_Renderer* render, std::string path)
 		// Close
 		_data_.close();
 	}
-	else {
+	else [[unlikely]] {
 		// Show error
 		std::cout << "Error texture: " << this->pathToTexture << std::endl;
 
@@ -47,7 +47,7 @@ MapImage::MapImage(SDL_Renderer* render, std::string path)
  */
 void MapImage::Start() {
 	// Map
-	for (auto item : this->_data_json_.items()) {
+	for (auto &item : this->_data_json_.items()) {
 		// Setup
 		SDL_Surface* _image_;
 		SDL_RWops* _rwop_;
@@ -57,7 +57,7 @@ void MapImage::Start() {
 		_image_ = IMG_LoadPNG_RW(_rwop_);
 
 		// Check
-		if (!_image_) {
+		if (!_image_) [[unlikely]] {
 			// Show message error
 			std::cout << "Error: " << IMG_GetError() << std::endl;
 

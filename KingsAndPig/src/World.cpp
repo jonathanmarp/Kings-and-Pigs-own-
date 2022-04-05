@@ -10,12 +10,12 @@ World::World(SDL_Renderer* render, nlohmann::json data,
 	: _render_(render), _data_world_(data), 
 	  _mapImageTexture_(mapImageTexture), _mapImageSprite_(mapImageSprite) {
 	// Map <Array>
-	for (auto item : this->_data_world_.items()) {
+	for (auto &item : this->_data_world_.items()) {
 		// Setup variable for checking types
 		std::string types = item.value()["type"].get<std::string>();
 
 		// Check if the tile
-		if (types == "door") {
+		if (types == "door") [[likely]] {
 			// Add door temp variable
 			Door* doorTemp = new Door(this->_render_, this->_mapImageSprite_,
 				item.value()["x"].get<int>(),
@@ -33,9 +33,9 @@ World::World(SDL_Renderer* render, nlohmann::json data,
  */
 void World::Update() {
 	// Map sprite <Door>
-	for (auto door : this->doors) {
+	std::for_each(this->doors.begin(), this->doors.end(), [](auto& door) {
 		door->Update();
-	}
+	});
 }
 
 /**
@@ -45,13 +45,13 @@ void World::Render() {
 	// Map <Array>
 	for (auto item : this->_data_world_.items()) {
 		// Check if the tile
-		if (item.value()["type"].get<std::string>() == "tiles") {
+		if (item.value()["type"].get<std::string>() == "tiles") [[likely]] {
 			// Set size
 			this->destination.w = item.value()["width"].get<int>();
 			this->destination.h = item.value()["height"].get<int>();
 
 			// Map <Array>(tiles)
-			for (auto tile : item.value()["tiles"].items()) {
+			for (auto &tile : item.value()["tiles"].items()) {
 				// Set position
 				this->destination.x = tile.value()["gridX"].get<int>() * this->destination.w;
 				this->destination.y = tile.value()["gridY"].get<int>() * this->destination.h;
@@ -68,7 +68,7 @@ void World::Render() {
 	}
 
 	// Map sprite <Door>
-	for (auto door : this->doors) {
+	std::for_each(this->doors.begin(), this->doors.end(), [](auto& door) {
 		door->Render();
-	}
+	});
 }
