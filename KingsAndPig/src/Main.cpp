@@ -18,6 +18,9 @@
 // <File>
 #include "../include/File.h"
 
+// <Json>
+#include "../include/Json.h"
+
 // Include header <C++>
 #include <filesystem>
 
@@ -101,28 +104,7 @@ Main::~Main() {
 // This function used for first time
 void Main::Start() {
 	// Setup
-	// Check settings file is exist
-	if (File::IsExist(this->windowSettings)) [[likely]] {
-		// If exist
-		// Get file
-		std::ifstream _data_;
-
-		// Open
-		_data_.open(this->windowSettings);
-
-		// Convert into json
-		_data_ >> this->settingsWindow;
-
-		// Close
-		_data_.close();
-	}
-	else {
-		// Show error
-		std::cout << "Error settings window: " << this->windowSettings << std::endl;
-
-		// Exit
-		exit(1);
-	}
+	Json::GetData(this->windowSettings, &this->settingsWindow);
 	
 	// Intialize window
 	SDL_Window* window = SDL_CreateWindow("Kings and Pigs",
@@ -140,9 +122,17 @@ void Main::Start() {
 		this->settingsWindow["minWidth"].get<int>(), 
 		this->settingsWindow["minHeight"].get<int>());
 
+	// Setup for render
+	Uint32 flagsRender = SDL_RENDERER_PRESENTVSYNC;
+
+	// If using accelerate
+	if (this->settingsWindow["accelerate"].get<int>() > 0) [[likely]] {
+		// Add accelerate flags
+		flagsRender |= SDL_RENDERER_ACCELERATED;
+	}
+
 	// Intialize Render
-	SDL_Renderer* render = SDL_CreateRenderer(window, -1,
-		SDL_RENDERER_PRESENTVSYNC | SDL_RENDERER_ACCELERATED);
+	SDL_Renderer* render = SDL_CreateRenderer(window, -1, flagsRender);
 
 	// Check window and render have error
 	if (!window || !render) [[unlikely]] {
@@ -156,8 +146,10 @@ void Main::Start() {
 	// Intialize map image
 	this->mapImageTexture = new MapImage(this->core->GetRender(), 
 		std::string("../Core/" + this->settingsWindow["textureWorld"].get<std::string>()));
-	this->mapImageSprite = new MapImage(this->core->GetRender(),
-		std::string("../Core/" + this->settingsWindow["textureSprite"].get<std::string>()));
+	
+	// Get Data
+	Json::GetData("../Core/" + this->settingsWindow["textureSprite"].get<std::string>(), 
+		&this->jsonSprite);
 
 	// Add world
 	for (auto list : std::filesystem::directory_iterator("../Core/level")) {
@@ -165,32 +157,12 @@ void Main::Start() {
 		std::string tempWorldSettings = list.path().string();
 		nlohmann::json tempSettingsWorld;
 
-		// Check settings file is exist
-		if (File::IsExist(tempWorldSettings)) [[likely]] {
-			// If exist
-			// Get file
-			std::ifstream _data_;
-
-			// Open
-			_data_.open(tempWorldSettings);
-
-			// Convert into json
-			_data_ >> tempSettingsWorld;
-
-			// Close
-			_data_.close();
-		}
-		else [[unlikely]] {
-			// Show error
-			std::cout << "Error settings world: " << tempWorldSettings << std::endl;
-
-			// Exit
-			exit(1);
-		}
+		// Get Data
+		Json::GetData(tempWorldSettings, &tempSettingsWorld);
 
 		// Setup world
 		World tempWorld = World(this->core->GetRender(), tempSettingsWorld,
-			this->mapImageTexture, this->mapImageSprite);
+			this->mapImageTexture, this->jsonSprite);
 
 		// <Push> into world
 		this->worlds.push_back(tempWorld);

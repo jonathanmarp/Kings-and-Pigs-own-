@@ -5,6 +5,7 @@
   "minHeight": 600,
   "resizable": 0,
   "grid": 1,
-  "textureWorld": "textureWorld.json",
-  "textureSprite": "textureSprite.json"
+  "accelerate": 1,
+  "textureWorld": "./texture/textureWorld.json",
+  "textureSprite": "./texture/textureSprite.json"
 }

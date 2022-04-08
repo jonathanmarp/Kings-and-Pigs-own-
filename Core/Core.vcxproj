@@ -142,11 +142,12 @@
     <None Include="bin\compile.js" />
     <None Include="level\level1.json" />
     <None Include="src\level1.data.json" />
-    <None Include="textureSprite.json" />
+    <None Include="texture\sprite\door.json" />
+    <None Include="texture\textureSprite.json" />
     <None Include="window.json" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="textureWorld.json" />
+    <ClCompile Include="texture\textureWorld.json" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

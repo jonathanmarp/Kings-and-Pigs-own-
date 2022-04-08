@@ -16,6 +16,15 @@
 // Include header <Sprite>
 #include "Door.h"
 
+/**
+ * Struct for sprite
+ * Like image, and name of the images
+ */
+struct SpriteImages {
+	std::string name = "";
+	MapImage* mapImageSprite = nullptr;
+};
+
 class World {
 private:
 	// This variable for render
@@ -26,7 +35,7 @@ private:
 
 	// This function used for texture
 	MapImage* _mapImageTexture_ = nullptr;
-	MapImage* _mapImageSprite_ = nullptr;
+	std::vector<SpriteImages> spriteTexture;
 
 	// This function used to temp
 	SDL_Rect destination = {};
@@ -35,8 +44,15 @@ private:
 	std::vector<Door*> doors;
 public:
 	// Constructor
-	World(SDL_Renderer* render, nlohmann::json data, 
-		MapImage* mapImageTexture, MapImage* mapImageSprite);
+	World(SDL_Renderer* render, nlohmann::json& data, 
+		MapImage* mapImageTexture, nlohmann::json& dataSprite);
+
+private:
+	/**
+	 * This function used for get data texture
+	 */
+	MapImage* GetTexture(std::string name);
+
 public:
 	/**
 	 * This function used to logic

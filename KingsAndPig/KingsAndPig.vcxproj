@@ -178,6 +178,7 @@
     <ClCompile Include="src\Animation.cpp" />
     <ClCompile Include="src\Core.cpp" />
     <ClCompile Include="src\File.cpp" />
+    <ClCompile Include="src\Json.cpp" />
     <ClCompile Include="src\KingsAndPig.cpp" />
     <ClCompile Include="src\Main.cpp" />
     <ClCompile Include="src\MapImage.cpp" />
@@ -187,6 +188,7 @@
     <ClInclude Include="include\Animation.h" />
     <ClInclude Include="include\Core.h" />
     <ClInclude Include="include\File.h" />
+    <ClInclude Include="include\Json.h" />
     <ClInclude Include="include\Main.h" />
     <ClInclude Include="include\MapImage.h" />
     <ClInclude Include="include\World.h" />

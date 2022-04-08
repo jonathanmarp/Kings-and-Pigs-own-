@@ -37,7 +37,7 @@ private:
 
 	// This function used for texture
 	MapImage* mapImageTexture = nullptr;
-	MapImage* mapImageSprite = nullptr;
+	nlohmann::json jsonSprite;
 
 	// This variable will save our world
 	std::vector<World> worlds;
