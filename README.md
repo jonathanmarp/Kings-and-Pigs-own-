@@ -3,9 +3,9 @@
 ## This project requires some dependencies
 - ### SDL 2
   - SDL (Main)
-  - SDL TTF
   - SDL Image
 - ### [JSON](https://github.com/nlohmann/json)
+- ### [Box2D](https://github.com/erincatto/box2d)
 
 ## Support
 | Suport             | Operating System | Architecture  |
