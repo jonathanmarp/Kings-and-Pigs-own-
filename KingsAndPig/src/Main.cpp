@@ -3,7 +3,6 @@
 
 // Include header <SDL2>
 #include <SDL.h>
-#include <SDL_ttf.h>
 #include <SDL_image.h>
 
 // Include header <C++>
@@ -33,19 +32,9 @@ Main::Main() {
 	 * Init SDL2{Timer, Video, Events}
 	 * And check intialize has been successfull
 	 */
-	if (SDL_Init(SDL_INIT_TIMER | SDL_INIT_VIDEO | SDL_INIT_EVENTS) != 0) [[unlikely]] {
+	if (SDL_Init(SDL_INIT_TIMER | SDL_INIT_VIDEO | SDL_INIT_EVENTS | SDL_INIT_GAMECONTROLLER) != 0) [[unlikely]] {
 		// Show error message
 		std::cout << "Error: " << SDL_GetError() << std::endl;
-		return;
-	}
-
-	/**
-	 * Init SDL2{Timer, Video, Events}
-	 * And check intialize has been successfull
-	 */
-	if (TTF_Init() != 0) [[unlikely]] {
-		// Show error message
-		std::cout << "Error: " << TTF_GetError() << std::endl;
 		return;
 	}
 
@@ -90,9 +79,6 @@ Main::Main() {
 Main::~Main() {
 	// Free pointer
 	delete this->mapImageTexture;
-
-	// Quit TTF
-	TTF_Quit();
 
 	// Img Quit
 	IMG_Quit();
@@ -161,7 +147,7 @@ void Main::Start() {
 		Json::GetData(tempWorldSettings, &tempSettingsWorld);
 
 		// Setup world
-		World tempWorld = World(this->core->GetRender(), tempSettingsWorld,
+		World tempWorld = World(this->core, tempSettingsWorld,
 			this->mapImageTexture, this->jsonSprite);
 
 		// <Push> into world
@@ -171,6 +157,10 @@ void Main::Start() {
 
 // This function used for handle event
 void Main::Event() {
+	// Call event on <World>
+	this->worlds[this->levelWorld].Event();
+
+	// Switch
 	switch (this->core->GetEvent()->type) {
 		// If SDL Request quit
 		[[unlikely]] case SDL_QUIT: {
@@ -219,23 +209,20 @@ void Main::Render() {
 		// Horizontal
 		for (int i = 1; i < int(this->sizeWindow.width / 32) + 1; i++) {
 			// Draw <Line>
-			Line::DrawLine(this->core->GetRender(), 1, this->gridColor,
+			Line::Draw(this->core->GetRender(), 1, this->gridColor,
 				LineType::ToRight, 32 * i, 0, 32 * i, this->sizeWindow.height);
 		}
 
 		// Vertical
 		for (int i = 1; i < int(this->sizeWindow.height / 32) + 1; i++) {
 			// Draw <Line>
-			Line::DrawLine(this->core->GetRender(), 1, this->gridColor,
+			Line::Draw(this->core->GetRender(), 1, this->gridColor,
 				LineType::ToDown, 0, 32 * i, this->sizeWindow.width, 32 * i);
 		}
 	}
 
-	// Map worlds
-	std::for_each(this->worlds.begin(), this->worlds.end(), [](auto& world) {
-		// Render
-		world.Render();
-	});
+	// Render
+	this->worlds[levelWorld].Render();
 
 	// Present window
 	SDL_RenderPresent(this->core->GetRender());

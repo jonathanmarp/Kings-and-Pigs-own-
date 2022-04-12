@@ -88,15 +88,15 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>SDL_MAIN_HANDLED;WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)Sprite\include;$(SolutionDir)3party\json\include;$(SolutionDir)3party\SDL2_image-2.0.5\include;$(SolutionDir)Draw\include;$(SolutionDir)3party\SDL2_ttf-2.0.18\include;$(SolutionDir)3party\SDL2-2.0.20\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)3party\box2d-2.4.1\include;$(SolutionDir)Sprite\include;$(SolutionDir)3party\json\include;$(SolutionDir)3party\SDL2_image-2.0.5\include;$(SolutionDir)Draw\include;$(SolutionDir)3party\SDL2-2.0.20\include</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp20</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>$(SolutionDir)3party\SDL2_image-2.0.5\lib\x86;$(SolutionDir)3party\SDL2_ttf-2.0.18\lib\x86;$(SolutionDir)3party\SDL2-2.0.20\lib\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_ttf.lib;SDL2_image.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)3party\box2d-2.4.1\bin\debug;$(SolutionDir)3party\SDL2_image-2.0.5\lib\x86;$(SolutionDir)3party\SDL2-2.0.20\lib\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;box2d.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PreBuildEvent>
       <Message>
@@ -111,7 +111,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>SDL_MAIN_HANDLED;RELEASE_MODE;WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)Sprite\include;$(SolutionDir)3party\json\include;$(SolutionDir)3party\SDL2_image-2.0.5\include;$(SolutionDir)Draw\include;$(SolutionDir)3party\SDL2_ttf-2.0.18\include;$(SolutionDir)3party\SDL2-2.0.20\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)3party\box2d-2.4.1\include;$(SolutionDir)Sprite\include;$(SolutionDir)3party\json\include;$(SolutionDir)3party\SDL2_image-2.0.5\include;$(SolutionDir)Draw\include;$(SolutionDir)3party\SDL2-2.0.20\include</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp20</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
     </ClCompile>
@@ -120,8 +120,8 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>$(SolutionDir)3party\SDL2_image-2.0.5\lib\x86;$(SolutionDir)3party\SDL2_ttf-2.0.18\lib\x86;$(SolutionDir)3party\SDL2-2.0.20\lib\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_ttf.lib;SDL2_image.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)3party\box2d-2.4.1\bin\release;$(SolutionDir)3party\SDL2_image-2.0.5\lib\x86;$(SolutionDir)3party\SDL2-2.0.20\lib\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;box2d.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PreBuildEvent>
       <Message>
@@ -134,15 +134,15 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>SDL_MAIN_HANDLED;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)Sprite\include;$(SolutionDir)3party\json\include;$(SolutionDir)3party\SDL2_image-2.0.5\include;$(SolutionDir)Draw\include;$(SolutionDir)3party\SDL2_ttf-2.0.18\include;$(SolutionDir)3party\SDL2-2.0.20\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)3party\box2d-2.4.1\include;$(SolutionDir)Sprite\include;$(SolutionDir)3party\json\include;$(SolutionDir)3party\SDL2_image-2.0.5\include;$(SolutionDir)Draw\include;$(SolutionDir)3party\SDL2-2.0.20\include</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp20</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>$(SolutionDir)3party\SDL2_image-2.0.5\lib\x86;$(SolutionDir)3party\SDL2_ttf-2.0.18\lib\x86;$(SolutionDir)3party\SDL2-2.0.20\lib\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_ttf.lib;SDL2_image.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)3party\box2d-2.4.1\bin\debug;$(SolutionDir)3party\SDL2_image-2.0.5\lib\x86;$(SolutionDir)3party\SDL2-2.0.20\lib\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;box2d.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PreBuildEvent>
       <Message>
@@ -157,7 +157,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>SDL_MAIN_HANDLED;RELEASE_MODE;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)Sprite\include;$(SolutionDir)3party\json\include;$(SolutionDir)3party\SDL2_image-2.0.5\include;$(SolutionDir)Draw\include;$(SolutionDir)3party\SDL2_ttf-2.0.18\include;$(SolutionDir)3party\SDL2-2.0.20\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)3party\box2d-2.4.1\include;$(SolutionDir)Sprite\include;$(SolutionDir)3party\json\include;$(SolutionDir)3party\SDL2_image-2.0.5\include;$(SolutionDir)Draw\include;$(SolutionDir)3party\SDL2-2.0.20\include</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp20</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
     </ClCompile>
@@ -166,8 +166,8 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>$(SolutionDir)3party\SDL2_image-2.0.5\lib\x86;$(SolutionDir)3party\SDL2_ttf-2.0.18\lib\x86;$(SolutionDir)3party\SDL2-2.0.20\lib\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_ttf.lib;SDL2_image.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)3party\box2d-2.4.1\bin\release;$(SolutionDir)3party\SDL2_image-2.0.5\lib\x86;$(SolutionDir)3party\SDL2-2.0.20\lib\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;box2d.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PreBuildEvent>
       <Message>
@@ -182,6 +182,7 @@
     <ClCompile Include="src\KingsAndPig.cpp" />
     <ClCompile Include="src\Main.cpp" />
     <ClCompile Include="src\MapImage.cpp" />
+    <ClCompile Include="src\Rigidbody.cpp" />
     <ClCompile Include="src\World.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -191,6 +192,7 @@
     <ClInclude Include="include\Json.h" />
     <ClInclude Include="include\Main.h" />
     <ClInclude Include="include\MapImage.h" />
+    <ClInclude Include="include\Rigidbody.h" />
     <ClInclude Include="include\World.h" />
     <ClInclude Include="resource.h" />
   </ItemGroup>

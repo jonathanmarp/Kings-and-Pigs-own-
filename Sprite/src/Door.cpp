@@ -9,7 +9,6 @@ Door::Door(SDL_Renderer* render, MapImage* mapImageTexture,
 	int x, int y) : _render_(render), _mapImageTexture_(mapImageTexture) {
 	// Intialize animation
 	this->animation = new Animation(this->_mapImageTexture_);
-	this->animation->animation = 2;
 
 	// Set position
 	this->rectDoor.x = x;

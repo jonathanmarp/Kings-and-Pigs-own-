@@ -142,6 +142,7 @@
     <None Include="bin\compile.js" />
     <None Include="level\level1.json" />
     <None Include="src\level1.data.json" />
+    <None Include="texture\sprite\avatar.json" />
     <None Include="texture\sprite\door.json" />
     <None Include="texture\textureSprite.json" />
     <None Include="window.json" />

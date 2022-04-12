@@ -21,6 +21,7 @@
     <None Include="src\level1.data.json" />
     <None Include="texture\textureSprite.json" />
     <None Include="texture\sprite\door.json" />
+    <None Include="texture\sprite\avatar.json" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="texture\textureWorld.json">

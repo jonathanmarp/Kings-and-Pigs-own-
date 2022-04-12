@@ -9,12 +9,15 @@
 
 // Include header <Important>
 #include "MapImage.h"
+#include "Core.h"
 
 // Include header <3party>
 #include <nlohmann/json.hpp>
+#include <box2d/box2d.h>
 
 // Include header <Sprite>
 #include "Door.h"
+#include "Avatar.h"
 
 /**
  * Struct for sprite
@@ -27,8 +30,8 @@ struct SpriteImages {
 
 class World {
 private:
-	// This variable for render
-	SDL_Renderer* _render_ = nullptr;
+	// This variable for core
+	Core* core = nullptr;
 
 	// This variable for json or data world
 	nlohmann::json _data_world_ = nullptr;
@@ -42,9 +45,18 @@ private:
 
 	// This function used for sprite <Door>
 	std::vector<Door*> doors;
+
+	// This function used for sprite <Door>
+	std::vector<Avatar*> avatars;
+
+	// This variable used for physics
+	b2World* world;
+	float timeStep = 1.0f / 20.0f;
+	uint32_t velocityIterations = 6;
+	uint32_t positionIterations = 2;
 public:
 	// Constructor
-	World(SDL_Renderer* render, nlohmann::json& data, 
+	World(Core* pCore, nlohmann::json& data,
 		MapImage* mapImageTexture, nlohmann::json& dataSprite);
 
 private:
@@ -59,6 +71,12 @@ public:
 	 * or maybe something
 	 */
 	void Update();
+
+	/**
+	 * This function used to handle
+	 * Event
+	 */
+	void Event();
 
 	/**
 	 * This function used to render the tiles

@@ -1,14 +1,20 @@
 // Include header <Self>
 #include "../include/World.h"
 
+// Include header important
+#include "../include/Rigidbody.h"
+
 // Include header <C++>
 #include <iostream>
 
 // Constructor
-World::World(SDL_Renderer* render, nlohmann::json& data, 
+World::World(Core* pCore, nlohmann::json& data,
 	MapImage* mapImageTexture, nlohmann::json& dataSprite)
-	: _render_(render), _data_world_(data), 
+	: core(pCore), _data_world_(data), 
 	  _mapImageTexture_(mapImageTexture) {
+	// Intialize world
+	this->world = new b2World(b2Vec2(0.0f, 10.0f));
+
 	// Map <Array>
 	std::for_each(dataSprite.items().begin(), dataSprite.items().end(), [&](auto& item) {
 		// Make variable
@@ -21,7 +27,7 @@ World::World(SDL_Renderer* render, nlohmann::json& data,
 		_temp_.name = item.value()["name"].get<std::string>();
 
 		// Intialize map image
-		_temp_.mapImageSprite = new MapImage(this->_render_,
+		_temp_.mapImageSprite = new MapImage(this->core->GetRender(),
 			std::string("../Core/" + data["texture"].get<std::string>()));
 
 		// Push into <spriteTexture>
@@ -35,14 +41,43 @@ World::World(SDL_Renderer* render, nlohmann::json& data,
 		std::string types = item.value()["type"].get<std::string>();
 
 		// Check if the tile
-		if (types == "door") [[likely]] {
+		if (types == "tiles") [[likely]] {
+			// Check if collider tiles
+			if (item.value()["colider"].get<int>() == 1) {
+				// Set size
+				float width = item.value()["width"].get<float>();
+				float height = item.value()["height"].get<float>();
+
+				// Map <Array>(tiles)
+				for (auto& tile : item.value()["tiles"].items()) {
+					// Set position
+					float x = tile.value()["gridX"].get<float>() * width;
+					float y = tile.value()["gridY"].get<float>() * height;
+
+					// Make rigidbody
+					Rigidbody _temp_tiles_;
+					_temp_tiles_.RigidBodyGroundInit(this->world, x, y, width, height);
+				}
+			}
+		} 
+		else if (types == "door") [[likely]] {
 			// Add door temp variable
-			Door* doorTemp = new Door(this->_render_, this->GetTexture("door"),
+			Door* doorTemp = new Door(this->core->GetRender(), this->GetTexture("door"),
 				item.value()["x"].get<int>(),
 				item.value()["y"].get<int>());
 
 			// Push into doors
 			this->doors.push_back(doorTemp);
+		}
+		else if (types == "avatar") [[likely]] {
+			// Add door temp variable
+			Avatar* avatarTemp = new Avatar(this->core, this->GetTexture("avatar"),
+				this->world,
+				item.value()["x"].get<int>(),
+				item.value()["y"].get<int>());
+
+			// Push into doors
+			this->avatars.push_back(avatarTemp);
 		}
 	});
 }
@@ -69,9 +104,28 @@ MapImage* World::GetTexture(std::string name) {
  * or maybe something
  */
 void World::Update() {
+	// Update step
+	this->world->Step(this->timeStep, this->velocityIterations, this->positionIterations);
+
 	// Map sprite <Door>
 	std::for_each(this->doors.begin(), this->doors.end(), [](auto& door) {
 		door->Update();
+	});
+
+	// Map sprite <Avatar>
+	std::for_each(this->avatars.begin(), this->avatars.end(), [](auto& avatar) {
+		avatar->Update();
+	});
+}
+
+/**
+ * This function used to handle
+ * Event
+ */
+void World::Event() {
+	// Map sprite <Avatar>
+	std::for_each(this->avatars.begin(), this->avatars.end(), [](auto& avatar) {
+		avatar->Event();
 	});
 }
 
@@ -95,7 +149,7 @@ void World::Render() {
 				this->destination.y = tile.value()["gridY"].get<int>() * this->destination.h;
 
 				// Render
-				SDL_RenderCopy(this->_render_,
+				SDL_RenderCopy(this->core->GetRender(),
 					this->_mapImageTexture_->textures[item.value()["IDTexture"].get<int>()].data,
 					&this->_mapImageTexture_->textures[item.value()["IDTexture"].get<int>()].tiles
 					[tile.value()["tileY"].get<int>()]
@@ -108,5 +162,10 @@ void World::Render() {
 	// Map sprite <Door>
 	std::for_each(this->doors.begin(), this->doors.end(), [](auto& door) {
 		door->Render();
+	});
+
+	// Map sprite <Avatar>
+	std::for_each(this->avatars.begin(), this->avatars.end(), [](auto& avatar) {
+		avatar->Render();
 	});
 }

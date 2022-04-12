@@ -21,7 +21,7 @@ public:
 	 * This function used to draw line
 	 * With width can be settings
 	 */
-	[[maybe_unused]] static void DrawLine(SDL_Renderer* render, uint8_t width, SDL_Color color,
+	[[maybe_unused]] static void Draw(SDL_Renderer* render, uint8_t width, SDL_Color color,
 		LineType type, int x1, int y1, int x2, int y2);
 };
 

@@ -18,9 +18,15 @@
     <ClInclude Include="include\Door.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="include\Avatar.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Door.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Avatar.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

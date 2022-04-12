@@ -1,13 +1,6 @@
-﻿  File.cpp
-  Json.cpp
-  KingsAndPig.cpp
-  Main.cpp
-D:\Dev\KingsAndPig\KingsAndPig\src\Main.cpp(83,35): warning C4018: '>': signed/unsigned mismatch
-  MapImage.cpp
-  World.cpp
-  Generating code
-  1365 of 1977 functions (69.0%) were compiled, the rest were copied from previous compilation.
-    102 functions were new in current compilation
-    114 functions had inline decision re-evaluated but remain unchanged
+﻿  Generating code
+  168 of 2094 functions ( 8.0%) were compiled, the rest were copied from previous compilation.
+    125 functions were new in current compilation
+    216 functions had inline decision re-evaluated but remain unchanged
   Finished generating code
   KingsAndPig.vcxproj -> D:\Dev\KingsAndPig\Release\KingsAndPig.exe

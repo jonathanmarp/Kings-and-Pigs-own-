@@ -5,7 +5,7 @@
  * This function used to draw line
  * With width can be settings
  */
-[[maybe_unused]] void Line::DrawLine(SDL_Renderer* render, uint8_t width, SDL_Color color, LineType type,
+[[maybe_unused]] void Line::Draw(SDL_Renderer* render, uint8_t width, SDL_Color color, LineType type,
 	int x1, int y1, int x2, int y2) {
 	// Set draw color
 	SDL_SetRenderDrawColor(render, color.r, color.g, color.b, color.a);

@@ -39,7 +39,8 @@ private:
 	MapImage* mapImageTexture = nullptr;
 	nlohmann::json jsonSprite;
 
-	// This variable will save our world
+	// This variable will save our world and information
+	uint8_t levelWorld = 0;
 	std::vector<World> worlds;
 public:
 	// Constructor

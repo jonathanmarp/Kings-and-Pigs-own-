@@ -19,9 +19,11 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="include\Avatar.h" />
     <ClInclude Include="include\Door.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Avatar.cpp" />
     <ClCompile Include="src\Door.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
@@ -96,7 +98,7 @@
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
-      <AdditionalIncludeDirectories>$(SolutionDir)KingsAndPig\include;$(SolutionDir)3party\json\include;$(SolutionDir)3party\SDL2_image-2.0.5\include;$(SolutionDir)3party\SDL2-2.0.20\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)3party\box2d-2.4.1\include;$(SolutionDir)KingsAndPig\include;$(SolutionDir)3party\json\include;$(SolutionDir)3party\SDL2_image-2.0.5\include;$(SolutionDir)Draw\include;$(SolutionDir)3party\SDL2-2.0.20\include</AdditionalIncludeDirectories>
       <Optimization>Custom</Optimization>
     </ClCompile>
     <Link>
@@ -114,7 +116,7 @@
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
-      <AdditionalIncludeDirectories>$(SolutionDir)KingsAndPig\include;$(SolutionDir)3party\json\include;$(SolutionDir)3party\SDL2_image-2.0.5\include;$(SolutionDir)3party\SDL2-2.0.20\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)3party\box2d-2.4.1\include;$(SolutionDir)KingsAndPig\include;$(SolutionDir)3party\json\include;$(SolutionDir)3party\SDL2_image-2.0.5\include;$(SolutionDir)Draw\include;$(SolutionDir)3party\SDL2-2.0.20\include</AdditionalIncludeDirectories>
       <Optimization>Custom</Optimization>
     </ClCompile>
     <Link>
@@ -132,7 +134,7 @@
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
-      <AdditionalIncludeDirectories>$(SolutionDir)KingsAndPig\include;$(SolutionDir)3party\json\include;$(SolutionDir)3party\SDL2_image-2.0.5\include;$(SolutionDir)3party\SDL2-2.0.20\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)3party\box2d-2.4.1\include;$(SolutionDir)KingsAndPig\include;$(SolutionDir)3party\json\include;$(SolutionDir)3party\SDL2_image-2.0.5\include;$(SolutionDir)Draw\include;$(SolutionDir)3party\SDL2-2.0.20\include</AdditionalIncludeDirectories>
       <Optimization>Custom</Optimization>
     </ClCompile>
     <Link>
@@ -150,7 +152,7 @@
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
-      <AdditionalIncludeDirectories>$(SolutionDir)KingsAndPig\include;$(SolutionDir)3party\json\include;$(SolutionDir)3party\SDL2_image-2.0.5\include;$(SolutionDir)3party\SDL2-2.0.20\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)3party\box2d-2.4.1\include;$(SolutionDir)KingsAndPig\include;$(SolutionDir)3party\json\include;$(SolutionDir)3party\SDL2_image-2.0.5\include;$(SolutionDir)Draw\include;$(SolutionDir)3party\SDL2-2.0.20\include</AdditionalIncludeDirectories>
       <Optimization>Custom</Optimization>
     </ClCompile>
     <Link>
