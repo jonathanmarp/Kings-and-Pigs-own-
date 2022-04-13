@@ -26,7 +26,7 @@ Avatar::Avatar(Core* pCore, MapImage* mapImageTexture, b2World* world,
 	this->rigidbody->RigidBodyCircleInit(world,
 		(float)this->rectDoor.x, (float)this->rectDoor.y,
 		(float)this->rectDoor.w, (float)this->rectDoor.h,
-		RigidBodyType::DYNAMIC, 30.0f);
+		RigidBodyType::DYNAMIC, 20.0f);
 }
 
 /**
