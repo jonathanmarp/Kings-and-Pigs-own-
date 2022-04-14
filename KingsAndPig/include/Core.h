@@ -60,13 +60,13 @@ public:
 	 * This function used to get program run
 	 * On this class
 	 */
-	bool& IsProgramRun();
+	const bool& IsProgramRun() const;
 
 	/**
 	 * This function used to get FPS
 	 * On this class
 	 */
-	uint8_t& HowManyFPS();
+	const uint8_t& HowManyFPS() const;
 
 	/**
 	 * This function used to get Event

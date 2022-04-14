@@ -3,6 +3,7 @@
 
 // Include header <C++>
 #include <string>
+#include <future>
 
 // Include header <Important>
 #include "Core.h"
@@ -42,6 +43,9 @@ private:
 	// This variable will save our world and information
 	uint8_t levelWorld = 0;
 	std::vector<World> worlds;
+
+	// This variable used for async
+	std::future<SDL_Window*> window_init;
 public:
 	// Constructor
 	Main();

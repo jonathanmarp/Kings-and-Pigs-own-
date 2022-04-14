@@ -1,12 +1,14 @@
 // Include header <Self>
 #include "../include/Rigidbody.h"
 
+// Include header <C++>
 #include <iostream>
 
 /**
  * This function used for initialize ground
  */
-void Rigidbody::RigidBodyGroundInit(b2World* world, float x, float y, float w, float h) {
+[[maybe_unused]] void Rigidbody::RigidBodyGroundInit(b2World* world, float x, float y, 
+	float w, float h) {
 	// Setup body def
 	this->bodyDef.type = b2_staticBody;
 	this->bodyDef.position.Set(x, y);
@@ -18,7 +20,7 @@ void Rigidbody::RigidBodyGroundInit(b2World* world, float x, float y, float w, f
 	b2PolygonShape shape;
 
 	// Set size shape box
-	shape.SetAsBox(w, h);
+	shape.SetAsBox(w * (float)0.5, h * (float)0.5);
 
 	// Create fixture on body
 	this->body->CreateFixture(&shape, 0.0f);
@@ -27,9 +29,8 @@ void Rigidbody::RigidBodyGroundInit(b2World* world, float x, float y, float w, f
 /**
  * This function used for initialize
  */
-void Rigidbody::RigidBodyCircleInit(b2World* world, float x, float y, float w, float h,
-	RigidBodyType type, float radius,
-	float density, float friction,
+[[maybe_unused]] void Rigidbody::RigidBodyCircleInit(b2World* world, float x, float y, 
+	float w, float h, RigidBodyType type, float radius, float density, float friction,
 	float resitution, float resitutionThreshold) {
 	// Setup body def
 	this->bodyDef.type = (b2BodyType)type;
@@ -60,10 +61,9 @@ void Rigidbody::RigidBodyCircleInit(b2World* world, float x, float y, float w, f
  * This function used for initialize
  * Box
  */
-void Rigidbody::RigidBodyBoxInit(b2World* world, float x, float y, float w, float h,
-	RigidBodyType type, float radius,
-	float density, float friction,
-	float resitution, float resitutionThreshold) {
+[[maybe_unused]] void Rigidbody::RigidBodyBoxInit(b2World* world, float x, float y, 
+	float w, float h, RigidBodyType type, float radius,
+	float density, float friction, float resitution, float resitutionThreshold) {
 	// Setup body def
 	this->bodyDef.type = (b2BodyType)type;
 	this->bodyDef.position.Set(x, y);

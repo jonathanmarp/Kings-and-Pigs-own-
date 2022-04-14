@@ -12,6 +12,15 @@ Animation::Animation(MapImage* mapImageTexture, bool pRepeat)
  * This function used for logic
  */
 void Animation::Update() {
+	// Check if have update animation
+	if (this->animation_ != this->animation) {
+		// Set index animation = 0;
+		this->indexAnimation = 0;
+		
+		// Set animation in <Private> into animation <Public>
+		this->animation_ = this->animation;
+	}
+
 	// Animation
 	// If animation bigger than delay
 	if (SDL_GetTicks() - this->startTicks > this->delayAnimation) {

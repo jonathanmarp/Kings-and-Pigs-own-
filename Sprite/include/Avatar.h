@@ -32,8 +32,8 @@ private:
 	 * For sprite where it's need to go
 	 */
 	float speed = 20;
+	float jumpForce = 100;
 	int8_t direction = 1;
-	bool movement = false;
 
 	/**
 	 * This variable used for animation
@@ -44,11 +44,12 @@ private:
 	 * This variable used for physics
 	 */
 	Rigidbody* rigidbody = nullptr;
+	int radius = 13;
 public:
 	// Constructor
 	Avatar(Core* pCore, MapImage* mapImageTexture, b2World* world,
 		int x, int y);
-
+	
 public:
 	/**
 	 * This function used for logic

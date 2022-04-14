@@ -7,7 +7,7 @@
 
 // Include header <C++>
 #include <iostream>
-#include <fstream>
+#include <future>
 
 // Include header <Draw>
 // <Line>
@@ -24,9 +24,13 @@
 #include <filesystem>
 
 // Constructor
-Main::Main() {
+Main::Main() {	
 	// Set SDL2 into ready
 	SDL_SetMainReady();
+
+	// Setup Get window settings
+	std::async(std::launch::async, Json::GetData,
+		this->windowSettings, &this->settingsWindow).wait();
 
 	/** 
 	 * Init SDL2{Timer, Video, Events}
@@ -88,10 +92,7 @@ Main::~Main() {
 }
 
 // This function used for first time
-void Main::Start() {
-	// Setup
-	Json::GetData(this->windowSettings, &this->settingsWindow);
-	
+void Main::Start() {	
 	// Intialize window
 	SDL_Window* window = SDL_CreateWindow("Kings and Pigs",
 		SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,

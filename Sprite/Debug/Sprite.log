@@ -1,2 +1,4 @@
 ﻿  Avatar.cpp
+D:\Dev\KingsAndPig\Sprite\src\Avatar.cpp(116,12): warning C4834: discarding return value of function with 'nodiscard' attribute
+D:\Dev\KingsAndPig\Sprite\src\Avatar.cpp(126,12): warning C4834: discarding return value of function with 'nodiscard' attribute
   Sprite.vcxproj -> D:\Dev\KingsAndPig\Debug\Sprite.lib

@@ -15,6 +15,7 @@ private:
 	// This variable for animation <Private>
 	int indexAnimation = 0;
 	int startTicks = 0;
+	int animation_ = 0;
 
 public:
 	// This variable for animation <Public>

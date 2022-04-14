@@ -39,7 +39,7 @@ SDL_Renderer* Core::GetRender() {
  * This function used for to program run
  * On this class
  */
-bool& Core::IsProgramRun() {
+const bool& Core::IsProgramRun() const {
 	// return data
 	return this->_program_run_;
 }
@@ -48,7 +48,7 @@ bool& Core::IsProgramRun() {
  * This function used to get FPS
  * On this class
  */
-uint8_t& Core::HowManyFPS() {
+const uint8_t& Core::HowManyFPS() const {
 	// return data
 	return this->_fps_;
 }

@@ -3,5 +3,10 @@
     "assets": "../assets/01-King Human/Idle (78x58).png",
     "width": 78,
     "height": 58
+  },
+  {
+    "assets": "../assets/01-King Human/Run (78x58).png",
+    "width": 78,
+    "height": 58
   }
 ]

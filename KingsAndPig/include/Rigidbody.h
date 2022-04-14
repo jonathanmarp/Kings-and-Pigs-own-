@@ -30,13 +30,13 @@ public:
 	/**
 	 * This function used for initialize ground
 	 */
-	void RigidBodyGroundInit(b2World* world, float x, float y, float w, float h);
+	[[maybe_unused]] void RigidBodyGroundInit(b2World* world, float x, float y, float w, float h);
 
 	/**
 	 * This function used for initialize
 	 * Circle
 	 */
-	void RigidBodyCircleInit(b2World* world, float x, float y, float w, float h,
+	[[maybe_unused]] void RigidBodyCircleInit(b2World* world, float x, float y, float w, float h,
 		RigidBodyType type, float radius,
 		float density = 1.0f, float friction = 0.5f,
 		float resitution = 0.0f, float resitutionThreshold = 0.5f);
@@ -45,7 +45,7 @@ public:
 	 * This function used for initialize
 	 * Box
 	 */
-	void RigidBodyBoxInit(b2World* world, float x, float y, float w, float h,
+	[[maybe_unused]] void RigidBodyBoxInit(b2World* world, float x, float y, float w, float h,
 		RigidBodyType type, float radius,
 		float density = 1.0f, float friction = 0.5f,
 		float resitution = 0.0f, float resitutionThreshold = 0.5f);
