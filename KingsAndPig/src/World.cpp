@@ -6,6 +6,7 @@
 
 // Include header <C++>
 #include <iostream>
+#include <future>
 
 // Constructor
 World::World(Core* pCore, nlohmann::json& data,
@@ -15,23 +16,26 @@ World::World(Core* pCore, nlohmann::json& data,
 	// Intialize world
 	this->world = new b2World(b2Vec2(0.0f, 10.0f));
 
-	// Map <Array>
-	std::for_each(dataSprite.items().begin(), dataSprite.items().end(), [&](auto& item) {
-		// Make variable
-		SpriteImages _temp_;
+	// Do in async
+	std::future<void> asyncSettings = std::async(std::launch::async, [&]() {
+		// Map <Array>
+		std::for_each(dataSprite.items().begin(), dataSprite.items().end(), [&](auto& item) {
+			// Make variable
+			SpriteImages _temp_;
 
-		// <Ref>
-		nlohmann::json& data = item.value();
+			// <Ref>
+			nlohmann::json& data = item.value();
 
-		// Set name
-		_temp_.name = item.value()["name"].get<std::string>();
+			// Set name
+			_temp_.name = item.value()["name"].get<std::string>();
 
-		// Intialize map image
-		_temp_.mapImageSprite = new MapImage(this->core->GetRender(),
-			std::string("../Core/" + data["texture"].get<std::string>()));
+			// Intialize map image
+			_temp_.mapImageSprite = new MapImage(this->core->GetRender(),
+				std::string("../Core/" + data["texture"].get<std::string>()));
 
-		// Push into <spriteTexture>
-		spriteTexture.push_back(_temp_);
+			// Push into <spriteTexture>
+			spriteTexture.push_back(_temp_);
+		});
 	});
 
 	// Map <Array>
@@ -59,17 +63,23 @@ World::World(Core* pCore, nlohmann::json& data,
 					_temp_tiles_.RigidBodyGroundInit(this->world, x, y, width, height);
 				}
 			}
-		} 
+		}
 		else if (types == "door") [[likely]] {
+			// Wait
+			asyncSettings.wait();
+
 			// Add door temp variable
-			Door* doorTemp = new Door(this->core->GetRender(), this->GetTexture("door"),
+			Door * doorTemp = new Door(this->core->GetRender(), this->GetTexture("door"),
 				item.value()["x"].get<int>(),
 				item.value()["y"].get<int>());
 
-			// Push into doors
-			this->doors.push_back(doorTemp);
+		// Push into doors
+		this->doors.push_back(doorTemp);
 		}
 		else if (types == "avatar") [[likely]] {
+			// Wait
+			asyncSettings.wait();
+
 			// Add door temp variable
 			Avatar* avatarTemp = new Avatar(this->core, this->GetTexture("avatar"),
 				this->world,

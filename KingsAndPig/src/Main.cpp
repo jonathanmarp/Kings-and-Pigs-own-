@@ -7,7 +7,6 @@
 
 // Include header <C++>
 #include <iostream>
-#include <future>
 
 // Include header <Draw>
 // <Line>
@@ -27,10 +26,6 @@
 Main::Main() {	
 	// Set SDL2 into ready
 	SDL_SetMainReady();
-
-	// Setup Get window settings
-	std::async(std::launch::async, Json::GetData,
-		this->windowSettings, &this->settingsWindow).wait();
 
 	/** 
 	 * Init SDL2{Timer, Video, Events}
@@ -92,7 +87,10 @@ Main::~Main() {
 }
 
 // This function used for first time
-void Main::Start() {	
+void Main::Start() {
+	// Setup Get window settings
+	Json::GetData(this->windowSettings, &this->settingsWindow);
+
 	// Intialize window
 	SDL_Window* window = SDL_CreateWindow("Kings and Pigs",
 		SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,
@@ -125,6 +123,8 @@ void Main::Start() {
 	if (!window || !render) [[unlikely]] {
 		// Show error message
 		std::cout << "Error: " << SDL_GetError() << std::endl;
+
+		// Exit
 	}
 
 	// Intialize

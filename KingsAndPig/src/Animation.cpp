@@ -3,7 +3,7 @@
 
 // Construction
 Animation::Animation(MapImage* mapImageTexture, bool pRepeat)
-	: _mapImageTexture_(mapImageTexture), repeat(pRepeat) {
+	: _mapImageTexture_(mapImageTexture), repeat(std::move(pRepeat)) {
 	// Set tick
 	this->startTicks = SDL_GetTicks();
 }

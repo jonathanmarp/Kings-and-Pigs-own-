@@ -43,7 +43,7 @@
 	b2CircleShape shape;
 
 	// Set size shape circle
-	shape.m_radius = radius;
+	shape.m_radius = std::move(radius);
 
 	// Setup fixture
 	this->fixtureDef.shape = &shape;

@@ -13,7 +13,7 @@
 
 // Constructor
 MapImage::MapImage(SDL_Renderer* render, std::string path)
-	: pathToTexture(path), _render_(render) {
+	: pathToTexture(std::move(path)), _render_(render) {
 	// Check file is exist
 	if (File::IsExist(this->pathToTexture)) [[likely]] {
 		// If exist

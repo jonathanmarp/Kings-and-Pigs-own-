@@ -115,6 +115,7 @@
       <AdditionalIncludeDirectories>$(SolutionDir)3party\box2d-2.4.1\include;$(SolutionDir)Sprite\include;$(SolutionDir)3party\json\include;$(SolutionDir)3party\SDL2_image-2.0.5\include;$(SolutionDir)Draw\include;$(SolutionDir)3party\SDL2-2.0.20\include</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp20</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
+      <Optimization>Full</Optimization>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -161,6 +162,7 @@
       <AdditionalIncludeDirectories>$(SolutionDir)3party\box2d-2.4.1\include;$(SolutionDir)Sprite\include;$(SolutionDir)3party\json\include;$(SolutionDir)3party\SDL2_image-2.0.5\include;$(SolutionDir)Draw\include;$(SolutionDir)3party\SDL2-2.0.20\include</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp20</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
+      <Optimization>Full</Optimization>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>

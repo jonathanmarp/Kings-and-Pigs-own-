@@ -3,7 +3,6 @@
 
 // Include header <C++>
 #include <iostream>
-#include <future>
 
 // Include header <Draw>
 #include "Circle.h"
@@ -15,8 +14,8 @@ Avatar::Avatar(Core* pCore, MapImage* mapImageTexture, b2World* world,
 	this->animation = new Animation(this->_mapImageTexture_);
 
 	// Set position
-	this->rectDoor.x = x;
-	this->rectDoor.y = y;
+	this->rectDoor.x = std::move(x);
+	this->rectDoor.y = std::move(y);
 
 	// Set size
 	this->rectDoor.w = 78;
@@ -113,18 +112,15 @@ void Avatar::Update() {
  */
 void Avatar::Render() {
 	// Render the sprite
-	std::async(std::launch::async,
-		SDL_RenderCopyEx, 
-		this->core->GetRender(),
+	SDL_RenderCopyEx(this->core->GetRender(),
 		this->animation->getTexture(),
 		this->animation->getFrame(),
 		&this->rectDoor, 0, (SDL_Point*)NULL,
-		SDL_RendererFlip(((this->direction == -1) ? 
+		SDL_RendererFlip(((this->direction == -1) ?
 			SDL_FLIP_HORIZONTAL : SDL_FLIP_NONE)));
 
 	// Render circle
-	std::async(std::launch::async, Circle::Draw, 
-		this->core->GetRender(), SDL_Color({ 0xff, 0xff, 0xff }),
+	Circle::Draw(this->core->GetRender(), SDL_Color({ 0xff, 0xff, 0xff }),
 		this->rectDoor.x + (this->rectDoor.w / 2),
 		this->rectDoor.y + (this->rectDoor.h / 2),
 		this->radius + 2);

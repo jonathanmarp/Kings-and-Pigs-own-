@@ -11,8 +11,8 @@ Door::Door(SDL_Renderer* render, MapImage* mapImageTexture,
 	this->animation = new Animation(this->_mapImageTexture_);
 
 	// Set position
-	this->rectDoor.x = x;
-	this->rectDoor.y = y;
+	this->rectDoor.x = std::move(x);
+	this->rectDoor.y = std::move(y);
 
 	// Set size
 	this->rectDoor.w = 46;
