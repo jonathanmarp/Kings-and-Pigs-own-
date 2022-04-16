@@ -11,6 +11,7 @@
 | Suport             | Operating System | Architecture Build  |
 | ------------------ |:----------------:| -------------------:|
 | :heavy_check_mark: | Windows          |         x86         |
+| :heavy_check_mark: | Windows          |         x64         |
 
 ## Assets
 - ### Kings And Pigs
