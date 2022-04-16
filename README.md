@@ -8,9 +8,9 @@
 - ### [Box2D](https://github.com/erincatto/box2d)
 
 ## Support
-| Suport             | Operating System | Architecture  |
-| ------------------ |:----------------:| -------------:|
-| :heavy_check_mark: | Windows          |     x86       |
+| Suport             | Operating System | Architecture Build  |
+| ------------------ |:----------------:| -------------------:|
+| :heavy_check_mark: | Windows          |         x86         |
 
 ## Assets
 - ### Kings And Pigs
