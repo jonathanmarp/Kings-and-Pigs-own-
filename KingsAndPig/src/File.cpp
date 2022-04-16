@@ -3,12 +3,17 @@
 
 // Include header <C++>
 #include <fstream>
+#include <filesystem>
+#include <iostream>
 
 /**
  * This function used to check file is
  * Exist or not
  */
-[[maybe_unused]] bool File::IsExist(std::string path) {
+[[maybe_unused]] bool File::IsExist(std::string& path) {
+	// Set
+	path = std::filesystem::absolute(path).string();
+
 	// Setup
 	std::ifstream _data_;
 

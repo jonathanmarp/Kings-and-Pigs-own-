@@ -2,7 +2,7 @@
 <Project>
   <ProjectOutputs>
     <ProjectOutput>
-      <FullPath>D:\Dev\KingsAndPig\Release\bin\KingsAndPig.exe</FullPath>
+      <FullPath>D:\Dev\KingsAndPig\ReleaseWin32\bin\KingsAndPig.exe</FullPath>
     </ProjectOutput>
   </ProjectOutputs>
   <ContentFiles />

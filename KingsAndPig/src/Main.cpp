@@ -211,7 +211,8 @@ void Main::Render() {
 		for (int i = 1; i < int(this->sizeWindow.width / 32) + 1; i++) {
 			// Draw <Line>
 			Line::Draw(this->core->GetRender(), 1, this->gridColor,
-				LineType::ToRight, 32 * i, 0, 32 * i, this->sizeWindow.height);
+				LineType::ToRight, 32 * i, 0, 32 * i,
+				this->sizeWindow.height);
 		}
 
 		// Vertical

@@ -10,11 +10,11 @@
 #include <Windows.h>
 #endif
 
-int main(int argc, const char* argv[]) {
+auto main(int argc, const char* argv[]) -> decltype(0) {
 	// If release mode	
 	#ifdef RELEASE_MODE
 		// Free console
-		FreeConsole();
+		// FreeConsole();
 	#endif
 
 	// Setup box 2d

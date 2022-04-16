@@ -1,0 +1,10 @@
+[
+  {
+    "name": "door",
+    "texture": "./texture/sprite/door.json"
+  },
+  {
+    "name": "avatar",
+    "texture": "./texture/sprite/avatar.json"
+  }
+]
